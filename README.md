@@ -12,7 +12,7 @@ To setup the initial code base:
 ```bash
 git clone
 cd contentvec
-./setup.sh
+./setup.sh # change the conda_root to your conda installation path 
 ```
 
 ### Speaker Information in Speech Representation
@@ -61,12 +61,14 @@ downstream_expert:
 
 For output from the last layer of the model:
 ```bash
+cd s3prl/s3prl
 PYTHONPATH=../ python3 run_downstream.py -n exp_id -m train -u contentvec -d voxceleb1
 PYTHONPATH=../ python3 run_downstream.py -m evaluate -e result/downstream/exp_id/dev-best.ckpt
 ```
 
 For output from the last `i`th layer of the model:
 ```bash
+cd s3prl/s3prl
 PYTHONPATH=../ python3 run_downstream.py -n exp_id -m train -u contentvec -d voxceleb1 -s hidden_states -l -$i
 PYTHONPATH=../ python3 run_downstream.py -m evaluate -e result/downstream/exp_id/dev-best.ckpt
 ```
